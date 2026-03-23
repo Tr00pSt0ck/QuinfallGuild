@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   SplitForge — Sprite Splitter
+  </title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&amp;family=DM+Sans:wght@300;400;500&amp;display=swap" rel="stylesheet"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js">
+  </script>
+  <link href="css\style.css" rel="stylesheet"/>
+ </head>
+ <body>
+  <div id="flash">
+   <div id="fl">
+   </div>
+   <div id="fr">
+   </div>
+  </div>
+  <!-- NAV -->
+  <nav>
+   <div class="nav-logo">
+    <span class="nav-dot">
+    </span>
+    SplitForge
+   </div>
+   <button class="nav-cta" onclick="document.getElementById('tool').scrollIntoView({behavior:'smooth'})">
+    Open Tool ↓
+   </button>
+  </nav>
+  <!-- HERO -->
+  <section id="hero">
+   <div class="hero-blob">
+   </div>
+   <div class="hero-blob2">
+   </div>
+   <div class="hero-eyebrow">
+    Sprite Splitter · Quinfal Guild
+   </div>
+   <h1 class="hero-h1">
+    Split.
+    <br/>
+    <em>
+     Precisely.
+    </em>
+   </h1>
+   <p class="hero-desc">
+    Drop a 60×40 PNG sprite and get two pixel-perfect pieces — instantly, inside your browser. No uploads, no accounts.
+   </p>
+   <div class="spec-tag">
+    60 × 40 px
+    <span class="spec-arrow">
+     →
+    </span>
+    40×40  &amp;  20×40
+   </div>
+   <div class="hero-btns">
+    <button class="btn-rust" onclick="document.getElementById('tool').scrollIntoView({behavior:'smooth'})">
+     Open Tool
+    </button>
+    <button class="btn-ghost" onclick="document.getElementById('how').scrollIntoView({behavior:'smooth'})">
+     How it works
+    </button>
+   </div>
+   <!-- Sprite diagram -->
+   <div class="sprite-diagram">
+    <div class="sd-block sd-full">
+     <span>
+      60×40
+     </span>
+    </div>
+    <div class="sd-arr">
+     →
+    </div>
+    <div class="sd-pair">
+     <div class="sd-block sd-left">
+      <span>
+       40×40
+      </span>
+      <span class="sd-lbl">
+       Left
+      </span>
+     </div>
+     <div class="sd-block sd-right">
+      <span class="sd-lbl" style="right:0;left:auto;transform:none;">
+       20×40
+      </span>
+     </div>
+     <div class="sd-cut">
+     </div>
+    </div>
+   </div>
+   <div class="scroll-nudge" onclick="document.getElementById('tool').scrollIntoView({behavior:'smooth'})">
+    <svg fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24">
+     <path d="M12 5v14M5 14l7 7 7-7">
+     </path>
+    </svg>
+    Scroll to tool
+   </div>
+  </section>
+  <!-- FEATURES -->
+  <section id="features">
+   <p class="feat-label">
+    Why SplitForge
+   </p>
+   <div class="feat-grid">
+    <div class="feat-item">
+     <div class="feat-n">
+      01
+     </div>
+     <div class="feat-t">
+      Client-Side Only
+     </div>
+     <div class="feat-d">
+      Your images never leave your device. Zero servers, total privacy.
+     </div>
+    </div>
+    <div class="feat-item">
+     <div class="feat-n">
+      02
+     </div>
+     <div class="feat-t">
+      Pixel Perfect
+     </div>
+     <div class="feat-d">
+      Canvas API precision — no resampling, no compression, lossless PNG output.
+     </div>
+    </div>
+    <div class="feat-item">
+     <div class="feat-n">
+      03
+     </div>
+     <div class="feat-t">
+      Live Preview
+     </div>
+     <div class="feat-d">
+      Both pieces render before you download. See exactly what you'll get.
+     </div>
+    </div>
+    <div class="feat-item">
+     <div class="feat-n">
+      04
+     </div>
+     <div class="feat-t">
+      Works Everywhere
+     </div>
+     <div class="feat-d">
+      Optimised for mobile and desktop. Tap to browse or drag and drop.
+     </div>
+    </div>
+   </div>
+  </section>
+  <!-- TOOL -->
+  <section id="tool">
+   <div class="tool-hd">
+    <p class="tool-lbl">
+     The Tool
+    </p>
+    <h2 class="tool-h2">
+     Split Your
+     <em>
+      Sprite
+     </em>
+    </h2>
+   </div>
+   <div class="card">
+    <div class="card-head">
+     <div class="card-head-title">
+      Image Splitter
+     </div>
+     <div class="card-head-pill">
+      60 × 40 PNG
+     </div>
+    </div>
+    <div class="card-body">
+     <div class="dz" id="dz">
+      <div class="dz-ico">
+       🖼️
+      </div>
+      <div class="dz-main">
+       Drop your sprite here
+      </div>
+      <div class="dz-sub">
+       or
+       <u>
+        browse files
+       </u>
+       — PNG only
+      </div>
+      <input accept=".png,image/png" id="finput" type="file"/>
+     </div>
+     <div class="fchip" id="fchip">
+      <div class="fchip-ico">
+       🖼
+      </div>
+      <div class="fchip-name" id="fcname">
+       —
+      </div>
+      <div class="fchip-sz" id="fcsz">
+       —
+      </div>
+      <button class="fchip-x" id="fcx">
+       ✕
+      </button>
+     </div>
+     <div class="stbar" id="stbar">
+      <span id="sti">
+       ℹ️
+      </span>
+      <span id="stx">
+       —
+      </span>
+     </div>
+     <div class="prog" id="prog">
+      <div class="prog-b" id="progb">
+      </div>
+     </div>
+     <button class="sbtn" disabled="" id="sbtn">
+      <span>
+       ✂️
+      </span>
+      Split Image
+     </button>
+     <div class="results" id="results">
+      <div class="res-hd">
+       Result
+      </div>
+      <div class="res-cards">
+       <div class="rpc">
+        <div class="rpc-prev">
+         <canvas id="cL">
+         </canvas>
+        </div>
+        <div class="rpc-lbl">
+         Left Part
+        </div>
+        <div class="rpc-dim">
+         40 × 40 px
+        </div>
+        <button class="rpc-dl" id="dlL">
+         <svg fill="none" height="11" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24" width="11">
+          <path d="M12 3v14M5 14l7 7 7-7">
+          </path>
+          <path d="M3 21h18">
+          </path>
+         </svg>
+         Download
+        </button>
+       </div>
+       <div class="rpc">
+        <div class="rpc-prev">
+         <canvas id="cR">
+         </canvas>
+        </div>
+        <div class="rpc-lbl">
+         Right Part
+        </div>
+        <div class="rpc-dim">
+         20 × 40 px
+        </div>
+        <button class="rpc-dl" id="dlR">
+         <svg fill="none" height="11" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24" width="11">
+          <path d="M12 3v14M5 14l7 7 7-7">
+          </path>
+          <path d="M3 21h18">
+          </path>
+         </svg>
+         Download
+        </button>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!-- HOW IT WORKS -->
+  <section id="how">
+   <div class="how-inner">
+    <p class="how-lbl">
+     Process
+    </p>
+    <h2 class="how-h2">
+     How it works
+    </h2>
+    <div class="steps">
+     <div class="step">
+      <div class="step-n">
+       1
+      </div>
+      <div>
+       <div class="step-tt">
+        Select your sprite
+       </div>
+       <div class="step-dd">
+        Tap the drop zone or drag a PNG file onto it. SplitForge checks it's exactly 60×40 pixels before doing anything.
+       </div>
+      </div>
+     </div>
+     <div class="step">
+      <div class="step-n">
+       2
+      </div>
+      <div>
+       <div class="step-tt">
+        Hit Split
+       </div>
+       <div class="step-dd">
+        The tool uses the HTML5 Canvas API to crop your image locally — left 40×40 and right 20×40 — with zero quality loss.
+       </div>
+      </div>
+     </div>
+     <div class="step">
+      <div class="step-n">
+       3
+      </div>
+      <div>
+       <div class="step-tt">
+        Preview &amp; Download
+       </div>
+       <div class="step-dd">
+        Both pieces appear as live previews. Tap Download on each to save them as separate PNG files to your device.
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!-- FOOTER -->
+  <footer>
+   <div class="footer-brand">
+    <span class="nav-dot">
+    </span>
+    SplitForge
+   </div>
+   <div class="footer-info">
+    Quinfal Guild · All processing is local · No uploads
+   </div>
+   <div class="footer-info" style="width:100%;text-align:center;border-top:1px solid var(--sand2);padding-top:0.8rem;margin-top:0.2rem;">
+    Made by
+    <strong>
+     O.G
+    </strong>
+    with ❤️ for
+    <em>
+     The Quinfall
+    </em>
+   </div>
+  </footer>
+  <script src="js\script.js">
+  </script>
+ </body>
+</html>
